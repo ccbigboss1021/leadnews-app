@@ -123,7 +123,7 @@ export default {
           duration: 3,
         })
       } else {
-        Api.register(this.params)
+        Api.register(this.registerform)
           .then((d) => {
             modal.toast({ message: '注册成功', duration: 3 })
           })
