@@ -13,7 +13,8 @@ Api.prototype = {
 
   // 注册
   register: function (data) {
-    return this.vue.$request.postByEquipmentId('/app/user/api/v1/login/register', data)
+    let url = this.vue.$config.urls.get('user_register')
+    return this.vue.$request.postByEquipmentId(url, data)
   },
 }
 
