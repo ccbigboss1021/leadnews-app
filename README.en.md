@@ -1,7 +1,7 @@
 # heima-leadnews-app
 
 #### Description
-黑马头条app端
+app端
 
 #### Software Architecture
 Software architecture description

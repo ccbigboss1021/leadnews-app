@@ -1,6 +1,5 @@
 <!-- CopyRight (C) 2017-2022 Alibaba Group Holding Limited. -->
-<!-- Created by Tw93 on 17/07/28. -->
-<!-- Updated by Tw93 on 17/11/16.-->
+
 
 <template>
   <div class="wxc-tab-page"
@@ -21,7 +20,13 @@
              v-for="(v,index) in tabTitles"
              :key="index"
              :ref="'wxc-tab-title-'+index"
-             @click="setPage(index,v.url, clickAnimation)"
+             @click="() => {
+              // window.console.log(v);
+              // alert(v)
+
+              
+              setPage(index,v.url, clickAnimation)
+             }"
              :style="{
                width: tabStyles.width +'px',
                height: tabStyles.height +'px',
@@ -340,6 +345,7 @@
         }
       },
       setPage (page, url = null, animated = true) {
+        console.log(url);
         if (!this.isTabView) {
           this.jumpOut(url);
           return;

@@ -1,13 +1,14 @@
 export default {
-    tabTitles: [{title: '动态',id:'__dyna__'},
+    tabTitles: [
+        // {title: '动态',id:'__dyna__'},
         {title: '推荐',id:'__all__'},
-        { title: 'Java',id:1},
-        {title: '大数据',id:6},
-        { title: 'Mysql',id:2},
-        {title: 'Vue',id:3},
-        {title: 'Python',id:4},
-        {title: 'Weex',id:5},
-        {title: '其它',id:0}
+        { title: '思政',id:1},
+        {title: '体育',id:6},
+        { title: '公益',id:2},
+        {title: '国际',id:3},
+        {title: '娱乐',id:4},
+        {title: '历史',id:5},
+        {title: '其它',id:7}
     ],
     tabStyles: {
         bgColor: '#FFFFFF',

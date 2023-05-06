@@ -3,7 +3,7 @@
         <div class="bg-ops" :style="getBodyStyle"></div>
         <image v-if="img!=''" class="img" :src="img"></image>
         <text v-else class="icon" :style="getIconStyle">{{icon}}</text>
-        <text class="text">热搜：十三届全国人大二次会议</text>
+        <text class="text">热搜：十四届全国人民代表大会</text>
     </div>
 </template>
 

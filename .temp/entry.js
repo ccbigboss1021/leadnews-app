@@ -21,3 +21,6 @@ const App = require('@/main.vue');
 /* eslint-disable no-new */
 new Vue(Vue.util.extend({el: '#root', router}, App));
 router.push('/login');
+
+// const VueUploadComponent = require('vue-upload-component')
+// Vue.component('file-upload', VueUploadComponent)

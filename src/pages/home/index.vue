@@ -48,7 +48,7 @@
     data: () => ({
       api:null,// API
       shownew:true,//是否显示loadnew动画
-      showmore:false,//是否显示loadmore动画
+      showmore:true,//是否显示loadmore动画
       tabTitles: Config.tabTitles,//频道配置
       tabStyles: Config.tabStyles,//频道样式
       tabList: [...Array(Config.tabTitles.length).keys()].map(i => []),//列表数据集合
@@ -170,6 +170,7 @@
             staticUrl: `${data[i].staticUrl}${querystr}`
           }
           let time = new Date(data[i].publishTime).getTime();
+      
           if(this.params.maxBehotTime<time){
             this.params.maxBehotTime=time;
           }
@@ -195,6 +196,7 @@
       },
       // 频道页切换事件
       wxcTabPageCurrentTabSelected (e) {
+        if (this.params.tag === Config.tabTitles[e.page]['id']) return
         this.params.loaddir=1
         this.params.index=e.page
         this.params.tag = Config.tabTitles[e.page]['id'];
