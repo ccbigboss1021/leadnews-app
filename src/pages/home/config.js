@@ -1,3 +1,4 @@
+
 export default {
     tabTitles: [
         // {title: '动态',id:'__dyna__'},

@@ -49,9 +49,12 @@
       api:null,// API
       shownew:true,//是否显示loadnew动画
       showmore:true,//是否显示loadmore动画
-      tabTitles: Config.tabTitles,//频道配置
+      tabTitles: [
+        // {title: '动态',id:'__dyna__'},
+        {title: '推荐',id:'__all__'}
+    ],//频道配置
       tabStyles: Config.tabStyles,//频道样式
-      tabList: [...Array(Config.tabTitles.length).keys()].map(i => []),//列表数据集合
+      tabList: null,//列表数据集合
       tabPageHeight: 1334,//列表总高度
       params:{
         loaddir:1,
@@ -65,7 +68,9 @@
       timer : null,//定时函数
 
       token: '',
-      equipmentId: ''
+      equipmentId: '',
+
+      // test: []
     }),
     computed:{
       // 渲染加载最新和更多的国际化语言
@@ -74,7 +79,7 @@
     },
     mounted(){
       // 激活推荐按钮
-      this.$refs['wxc-tab-page'].setPage(1,null,true);
+      this.$refs['wxc-tab-page'].setPage(0,null,true)
     },
     destroyed(){
       clearInterval(this.timer)
@@ -109,6 +114,8 @@
       }).catch((e)=>{
         console.log(e)
       })
+      this.channelList()
+      console.log(this.tabTitles);
     },
     methods: {
       // 列表项在可见区域展示后的事件处理
@@ -196,10 +203,11 @@
       },
       // 频道页切换事件
       wxcTabPageCurrentTabSelected (e) {
-        if (this.params.tag === Config.tabTitles[e.page]['id']) return
+        // console.log(this.tabTitles);
+        if (this.params.tag === this.tabTitles[e.page]['id']) return
         this.params.loaddir=1
         this.params.index=e.page
-        this.params.tag = Config.tabTitles[e.page]['id'];
+        this.params.tag = this.tabTitles[e.page]['id'];
         this.params.maxBehotTime=0
         this.params.minBehotTime=20000000000000
         this.shownew=true
@@ -213,11 +221,25 @@
       },
       // 列表项点击事件
       wxcPanItemClicked(item){
+        console.log(item);
         this.$router.push({
           name:'article-info',
           params:item
         })
         console.log(item.staticUrl)
+      },
+
+      //获取频道数据
+      channelList: function(){
+        Api.getChannelList().then(res => {
+          res.data.forEach(item => {
+            this.tabTitles.push({title:item.name,id:item.id})
+          })
+          // this.tabTitles = this.test 获取列表数据用的
+          this.tabList = [...Array(this.tabTitles.length).keys()].map(i => [])
+        }).catch((e)=>{
+          console.log(e)
+        })
       }
     }
   };

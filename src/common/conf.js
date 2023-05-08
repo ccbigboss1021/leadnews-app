@@ -13,6 +13,8 @@ const config = {
   },
   // 请求本地的请求service
   urls: {
+    channelList:{url:'article/api/v1/channel/get-all/', sv: 'app' },
+
     load: { url: 'article/api/v1/article/load/', sv: 'app' },
     loadmore: { url: 'article/api/v1/article/loadmore/', sv: 'app' },
     loadnew: { url: 'article/api/v1/article/loadnew/', sv: 'app' },

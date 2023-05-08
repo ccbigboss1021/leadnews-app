@@ -60,6 +60,19 @@ Api.prototype = {
         else if(dir==2)
             url = this.vue.$config.urls.get('loadmore')
         return url;
+    },
+
+
+    // 获取频道列表
+    getChannelList(){
+        let url = this.vue.$config.urls.get('channelList')
+        return new Promise((resolve,reject) => {
+            this.vue.$request.get(url,{}).then(res => {
+                resolve(res)
+            }).catch((e) => {
+                reject(e);
+            })
+        })
     }
 }
 
